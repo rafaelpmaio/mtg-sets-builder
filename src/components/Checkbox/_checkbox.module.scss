@@ -1,0 +1,9 @@
+.container {
+    display: flex;
+    column-gap: 10px;
+    width: fit-content;
+
+    input {
+        min-width: 20px;
+    }
+}

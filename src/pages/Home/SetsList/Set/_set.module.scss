@@ -1,0 +1,51 @@
+@import "styles/abstract/vars";
+
+.container {
+  display: grid;
+  grid-template-areas:
+      "link link link checkbox";
+  position: relative;
+  gap: 10px;
+  height: 80px;
+  width: 260px;
+  border: solid $main-color;
+  border-radius: 10px;
+
+  input {
+    grid-area: checkbox;
+  }
+
+  a {
+    display: grid;
+    grid-area: link;
+    grid-template-areas:
+      "logo name name"
+      "logo percentage percentage";
+    gap: 10px;
+    cursor: pointer;
+
+    i {
+      grid-area: logo;
+      width: 60px;
+      margin: 10px 0 0 10px;
+    }
+
+    :nth-child(2) {
+      grid-area: name;
+      color: $font-color;
+      margin: 10px 0 0 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 200px;
+      max-width: 15ch;
+      height: 20px;
+      justify-self: left;
+    }
+
+    :nth-child(3) {
+      grid-area: percentage;
+      margin: 0;
+    }
+  }
+}

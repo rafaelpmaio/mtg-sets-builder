@@ -1,0 +1,20 @@
+.card {
+    text-align: justify;
+    height: 420px;
+    width: fit-content;
+    border-radius: 10px;
+    border: solid;
+    padding-bottom: 10px;
+
+    img {
+        height: 300px;
+    }
+
+    p {
+        margin: 0 0 5px 10px;
+    }
+
+    input {
+        margin-left: 10px;
+    }
+}

@@ -1,0 +1,102 @@
+import { render, screen, waitFor } from "@testing-library/react";
+import { RecoilRoot } from "recoil";
+import userEvent from "@testing-library/user-event";
+import DropdownMenu from "./DropdownMenu";
+
+const mockHandleFilter = jest.fn();
+
+const optionsList = ["First Option", "Second Option", "Third Option"];
+jest.mock("state/hooks/useHandleSelectorFilter", () => {
+  return {
+    useHandleSelectorFilter: () => mockHandleFilter,
+  };
+});
+
+describe("given a dropdown menu", () => {
+  test("all it's options are shown", () => {
+    render(<DropdownMenu options={optionsList} />, { wrapper: RecoilRoot });
+
+    const options = screen.getAllByRole("option");
+
+    expect(options).toHaveLength(optionsList.length);
+  });
+
+  test("the filter is running on every option selected", async () => {
+    const user = userEvent.setup();
+    render(<DropdownMenu options={optionsList} />, { wrapper: RecoilRoot });
+
+    const options = screen.getAllByRole("option");
+    const select = screen.getByRole("combobox");
+
+    options.forEach((option) => {
+      user.selectOptions(
+        select,
+        screen.getByRole("option", { name: option.textContent || "" })
+      );
+    });
+
+    await waitFor(() => {
+      expect(mockHandleFilter).toHaveBeenCalledTimes(options.length);
+    });
+  });
+});
+
+describe("when the dropdown menu has NO default option", () => {
+  test("when 1 option is selected, the filter just runs once", async () => {
+    const user = userEvent.setup();
+    render(<DropdownMenu options={optionsList} />, { wrapper: RecoilRoot });
+
+    const select = screen.getByRole("combobox");
+
+    await user.selectOptions(
+      select,
+      screen.getByRole("option", { name: "Third Option" })
+    );
+
+    expect(mockHandleFilter).not.toHaveBeenCalledWith("First Option"); //never selected option
+    expect(mockHandleFilter).not.toHaveBeenCalledWith("Second Option"); //never selected option
+    expect(mockHandleFilter).toHaveBeenCalledWith("Third Option"); //rendered onChange of selector
+  });
+  test("when multiple options are selected, the filter runs that same amount", async () => {
+    const user = userEvent.setup();
+    render(<DropdownMenu options={optionsList} />, { wrapper: RecoilRoot });
+
+    const select = screen.getByRole("combobox");
+
+    await user.selectOptions(
+      select,
+      screen.getByRole("option", { name: "Third Option" })
+    );
+    await user.selectOptions(
+      select,
+      screen.getByRole("option", { name: "Second Option" })
+    );
+
+    expect(mockHandleFilter).not.toHaveBeenCalledWith("First Option"); //never selected option
+    expect(mockHandleFilter).toHaveBeenCalledWith("Third Option"); //rendered onChange of selector
+    expect(mockHandleFilter).toHaveBeenCalledWith("Second Option"); //rendered onChange of selector
+  });
+});
+
+describe("when the dropdown menu has a default option", () => {
+  test("when 1 option is selected, the filter runs twice -- one for default and other for the selcted option", async () => {
+    const user = userEvent.setup();
+    render(
+      <DropdownMenu options={optionsList} defaultOption="First Option" />,
+      {
+        wrapper: RecoilRoot,
+      }
+    );
+
+    const select = screen.getByRole("combobox");
+
+    await user.selectOptions(
+      select,
+      screen.getByRole("option", { name: "Third Option" })
+    );
+
+    expect(mockHandleFilter).toHaveBeenCalledWith("First Option"); //default option on first page render
+    expect(mockHandleFilter).toHaveBeenCalledWith("Third Option"); //rendered onChange of selector
+    expect(mockHandleFilter).not.toHaveBeenCalledWith("Second Option"); //never selected option
+  });
+});
