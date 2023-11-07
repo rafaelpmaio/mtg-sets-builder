@@ -8,7 +8,7 @@ export const useGetUpdatedSet = () => {
 
   if (!selectedSet) {
     console.log("no SET selected!");
-    return;
+    return ;
   }
 
   const set: ISet | undefined = setsList.find(

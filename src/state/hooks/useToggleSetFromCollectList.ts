@@ -3,10 +3,10 @@ import { useSetRecoilState } from "recoil";
 import { setsListState } from "state/atom";
 
 export const useToggleSetFromCollectList = () => {
-  const toggleFromList = useSetRecoilState(setsListState);
+  const toggleCollectFromList = useSetRecoilState(setsListState);
 
   return (selectedSet: ISet, checkStatus: boolean = false) => {
-    toggleFromList((prevList) =>
+    toggleCollectFromList((prevList) =>
       prevList.map((set) => {
         if (set.id === selectedSet.id) {
           return {

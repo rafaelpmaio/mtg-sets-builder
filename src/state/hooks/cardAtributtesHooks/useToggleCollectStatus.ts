@@ -1,29 +1,25 @@
 import ICard from "interfaces/ICard";
-import { useGetSelectedSet } from "../selectedSetHooks/useGetSelectedSet";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { setsListState } from "state/atom";
 import { useGetUpdatedSet } from "../useGetUpdatedSet";
 
 export const useToggleCardCollectStatus = () => {
-  // const selectedSet = useGetSelectedSet();
-  const [setsList, updateSetsList] = useRecoilState(setsListState);
-  const set = useGetUpdatedSet();
+  const updateSetsList = useSetRecoilState(setsListState);
+  const setOfTheCard = useGetUpdatedSet();
+  const calculateCollectedTotal = (cardsList: ICard[]) => {
+    const collectedTotal = cardsList.reduce(
+      (accumulator, card) => accumulator + Number(card.isCollected),
+      0
+    );
+    return collectedTotal;
+  };
 
   return (selectedCard: ICard, checkStatus: boolean = false) => {
-    // if (!selectedSet) {
-    //   alert("selected set not found");
-    //   return;
-    // }
-
-    // const set = setsList.find((set) => set.id === selectedSet.id);
-
-    // if (!set) {
-    //   console.log("set not found in list");
-    //   return;
-    // }
-
-    const cardsList = set?.cards;
-    const updatedCardsList = cardsList?.map((card) => {
+    if (!setOfTheCard) {
+      console.log("não pudemos encontrar o SET desta carta");
+      return;
+    }
+    const updatedCardsList = setOfTheCard.cards.map((card) => {
       if (card.id === selectedCard.id) {
         return {
           ...card,
@@ -33,15 +29,11 @@ export const useToggleCardCollectStatus = () => {
       return card;
     });
 
-    const collectedTotal = updatedCardsList.reduce(
-      (accumulator, card) => accumulator + Number(card.isCollected),
-      0
-    );
-    console.log("total collected", collectedTotal);
+    const collectedTotal = calculateCollectedTotal(updatedCardsList);
 
     updateSetsList((prevList) =>
       prevList.map((set) => {
-        if (set.id === selectedSet.id) {
+        if (set.id === setOfTheCard.id) {
           set = {
             ...set,
             collectedCardsTotal: collectedTotal,
