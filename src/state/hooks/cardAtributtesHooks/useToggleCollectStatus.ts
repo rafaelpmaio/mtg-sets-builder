@@ -1,10 +1,11 @@
 import ICard from "interfaces/ICard";
-import { useSetRecoilState } from "recoil";
-import { setsListState } from "state/atom";
 import { useGetUpdatedSet } from "../useGetUpdatedSet";
+import useSetSetsList from "../setsListHooks/useSetSetsList";
+import { useGetSetsList } from "../setsListHooks/useGetSetsList";
 
 export const useToggleCardCollectStatus = () => {
-  const updateSetsList = useSetRecoilState(setsListState);
+  const prevList = useGetSetsList();
+  const updateSetsList = useSetSetsList();
   const setOfTheCard = useGetUpdatedSet();
   const calculateCollectedTotal = (cardsList: ICard[]) => {
     const collectedTotal = cardsList.reduce(
@@ -31,7 +32,7 @@ export const useToggleCardCollectStatus = () => {
 
     const collectedTotal = calculateCollectedTotal(updatedCardsList);
 
-    updateSetsList((prevList) =>
+    updateSetsList(
       prevList.map((set) => {
         if (set.id === setOfTheCard.id) {
           set = {

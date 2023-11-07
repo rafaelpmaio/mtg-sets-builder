@@ -1,19 +1,17 @@
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import {
-  setsListState,
-  filteredSetsListState,
-  filteredCardsListState,
-} from "state/atom";
+import { setsListState } from "state/atom";
 import { useGetSelectedSet } from "../selectedSetHooks/useGetSelectedSet";
+import { useSetFilteredCardsList } from "./useSetFilteredCardsList";
+import { useSetFilteredSetsList } from "./useSetFilteredSetsList";
 
 export const useHandleSelectorFilter = () => {
   const setsList = useRecoilValue(setsListState);
-  const setFilteredSetsList = useSetRecoilState(filteredSetsListState);
-  const setCardsList = useSetRecoilState(filteredCardsListState);
-  const selectedCollection = useGetSelectedSet();
+  const selectedSet = useGetSelectedSet();
+  const setFilteredSetsList = useSetFilteredSetsList();
+  const setFilteredCardsList = useSetFilteredCardsList();
 
   const updatedCollection = setsList.find(
-    (collection) => collection.id === selectedCollection?.id
+    (collection) => collection.id === selectedSet?.id
   );
 
   return (option: string) => {
@@ -22,9 +20,7 @@ export const useHandleSelectorFilter = () => {
       setFilteredSetsList(setsList);
     }
     if (option === "Collect List") {
-      setFilteredSetsList(
-        setsList.filter((collection) => collection.collect)
-      );
+      setFilteredSetsList(setsList.filter((collection) => collection.collect));
     }
     if (option === "Completed Sets") {
       setFilteredSetsList(
@@ -37,19 +33,19 @@ export const useHandleSelectorFilter = () => {
       // const sortedList = updatedCollection?.cards.sort(
       //   (a, b) => Number(a.number) - Number(b.number)
       // );
-      setCardsList(updatedCollection ? updatedCollection.cards : null);
+      setFilteredCardsList(updatedCollection ? updatedCollection.cards : []);
     }
 
     if (option === "Collected") {
       return updatedCollection
-        ? setCardsList(
+        ? setFilteredCardsList(
             updatedCollection.cards.filter((card) => card.isCollected)
           )
         : null;
     }
     if (option === "Missing") {
       return updatedCollection
-        ? setCardsList(
+        ? setFilteredCardsList(
             updatedCollection.cards.filter((card) => !card.isCollected)
           )
         : null;

@@ -4,11 +4,10 @@ import { httpMtgJson } from "httpApi";
 import { getSetsUntilYear } from "../../../utils/setsListBuilderFunctions/getSetsUntilYear";
 import { getAllSets } from "../../../utils/setsListBuilderFunctions/getAllSets";
 import { buildSetsList } from "../../../utils/setsListBuilderFunctions/buildSetsList";
-import { useRecoilValue } from "recoil";
-import { setsListState } from "state/atom";
+import { useGetSetsList } from "../setsListHooks/useGetSetsList";
 
 export const useSetsListBuilder = () => {
-  const setsList = useRecoilValue(setsListState);
+  const setsList = useGetSetsList();
   const setSetsList = useSetSetsList();
   return () => {
     if (!setsList.length) {
@@ -25,9 +24,9 @@ export const useSetsListBuilder = () => {
         })
         .then((filteredSets) => {
           const setsList: ISet[] = buildSetsList(filteredSets);
-          console.log('não existe, fez novo', setsList)
+          console.log("não existe, fez novo", setsList);
           setSetsList(setsList);
         });
-    } 
+    }
   };
 };

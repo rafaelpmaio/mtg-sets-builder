@@ -1,12 +1,13 @@
 import ISet from "interfaces/ISet";
-import { useSetRecoilState } from "recoil";
-import { setsListState } from "state/atom";
+import useSetSetsList from "./setsListHooks/useSetSetsList";
+import { useGetSetsList } from "./setsListHooks/useGetSetsList";
 
 export const useToggleSetFromCollectList = () => {
-  const toggleCollectFromList = useSetRecoilState(setsListState);
+  const toggleCollectFromList = useSetSetsList();
+  const prevList = useGetSetsList();
 
   return (selectedSet: ISet, checkStatus: boolean = false) => {
-    toggleCollectFromList((prevList) =>
+    toggleCollectFromList(
       prevList.map((set) => {
         if (set.id === selectedSet.id) {
           return {
