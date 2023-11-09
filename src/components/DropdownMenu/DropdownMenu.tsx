@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useHandleSelectorFilter } from "state/hooks/dropdownMenuHooks/useHandleSelectorFilter";
+import { useHandleSelectorFilter } from "state/hooks/customHooks/useHandleSelectorFilter";
 import styles from "./_dropdownMenu.module.scss";
 
 interface SelectorProps {

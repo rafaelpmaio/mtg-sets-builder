@@ -1,6 +1,6 @@
 import Card from "./Card/Card";
 import styles from "./_cardList.module.scss";
-import { useGetScryfallData } from "state/hooks/cardAtributtesHooks/useGetScryfallData";
+import { useGetScryfallCardsData } from "state/hooks/stateHooks/scryfallCardsDataState/useGetScryfallCardsData";
 import ICard from "interfaces/ICard";
 
 interface cardsListProps {

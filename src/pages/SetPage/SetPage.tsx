@@ -1,7 +1,7 @@
-import { useGetFilteredCardsList } from "state/hooks/dropdownMenuHooks/useGetFilteredCardsList";
+import { useGetFilteredCardsList } from "state/hooks/stateHooks/filteredCardsListState/useGetFilteredCardsList";
 import CardsList from "./CardsList/CardList";
 import styles from "./_setPage.module.scss";
-import { useBuildScryfallData } from "state/hooks/useBuildScryfallData";
+import { useBuildScryfallData } from "state/hooks/customHooks/builders/useBuildScryfallData";
 import { useEffect } from "react";
 
 const SetPage = () => {

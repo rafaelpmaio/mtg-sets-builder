@@ -1,7 +1,7 @@
 import ISet from "interfaces/ISet";
 import { Link } from "react-router-dom";
-import { useToggleSetFromCollectList } from "state/hooks/useToggleSetFromCollectList";
-import { useSetSelectedSet } from "state/hooks/selectedSetHooks/useSetSelectedSet";
+import { useToggleSetFromCollectList } from "state/hooks/customHooks/useToggleSetFromCollectList";
+import { useSetSelectedSet } from "state/hooks/stateHooks/selectedSetState/useSetSelectedSet";
 import styles from "./_set.module.scss";
 import Checkbox from "components/Checkbox/Checkbox";
 import "keyrune";

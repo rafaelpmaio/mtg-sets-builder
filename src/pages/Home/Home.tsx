@@ -1,10 +1,10 @@
 import SetsList from "./SetsList/SetsList";
 import styles from "./_home.module.scss";
 import { useEffect } from "react";
-import { useSetsListBuilder } from "state/hooks/setsListBuilder/useSetsListBuilder";
+import { useBuildSetsList } from "state/hooks/customHooks/builders/useBuildSetsList";
 
 const Home = () => {
-  const buildSets = useSetsListBuilder();
+  const buildSets = useBuildSetsList();
 
   useEffect(() => {
       buildSets();

@@ -1,6 +1,6 @@
 import ISet from "interfaces/ISet";
-import useSetSetsList from "./setsListHooks/useSetSetsList";
-import { useGetSetsList } from "./setsListHooks/useGetSetsList";
+import useSetSetsList from "../stateHooks/setsListState/useSetSetsList";
+import { useGetSetsList } from "../stateHooks/setsListState/useGetSetsList";
 
 export const useToggleSetFromCollectList = () => {
   const toggleCollectFromList = useSetSetsList();

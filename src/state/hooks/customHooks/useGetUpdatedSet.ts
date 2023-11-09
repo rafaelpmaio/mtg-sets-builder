@@ -1,6 +1,6 @@
 import ISet from "interfaces/ISet";
-import { useGetSelectedSet } from "state/hooks/selectedSetHooks/useGetSelectedSet";
-import { useGetSetsList } from "state/hooks/setsListHooks/useGetSetsList";
+import { useGetSelectedSet } from "state/hooks/stateHooks/selectedSetState/useGetSelectedSet";
+import { useGetSetsList } from "state/hooks/stateHooks/setsListState/useGetSetsList";
 
 export const useGetUpdatedSet = () => {
   const setsList = useGetSetsList();

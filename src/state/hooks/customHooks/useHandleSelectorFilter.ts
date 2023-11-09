@@ -1,11 +1,10 @@
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { setsListState } from "state/atom";
-import { useGetSelectedSet } from "../selectedSetHooks/useGetSelectedSet";
-import { useSetFilteredCardsList } from "./useSetFilteredCardsList";
-import { useSetFilteredSetsList } from "./useSetFilteredSetsList";
+import { useGetSelectedSet } from "../stateHooks/selectedSetState/useGetSelectedSet";
+import { useSetFilteredCardsList } from "../stateHooks/filteredCardsListState/useSetFilteredCardsList";
+import { useSetFilteredSetsList } from "../stateHooks/filteredSetsListState/useSetFilteredSetsList";
+import { useGetSetsList } from "../stateHooks/setsListState/useGetSetsList";
 
 export const useHandleSelectorFilter = () => {
-  const setsList = useRecoilValue(setsListState);
+  const setsList = useGetSetsList();
   const selectedSet = useGetSelectedSet();
   const setFilteredSetsList = useSetFilteredSetsList();
   const setFilteredCardsList = useSetFilteredCardsList();

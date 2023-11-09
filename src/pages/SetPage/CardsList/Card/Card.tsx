@@ -1,9 +1,9 @@
 import ICard from "interfaces/ICard";
 import styles from "./_card.module.scss";
 import Checkbox from "components/Checkbox/Checkbox";
-import { useToggleCardCollectStatus } from "state/hooks/cardAtributtesHooks/useToggleCollectStatus";
+import { useToggleCardCollectStatus } from "state/hooks/customHooks/useToggleCardCollectStatus";
 import { Link } from "react-router-dom";
-import { useGetScryfallCard } from "state/hooks/useGetScryfallCard";
+import { useGetScryfallCard } from "state/hooks/customHooks/useGetScryfallCard";
 
 interface CardProps {
   card: ICard;

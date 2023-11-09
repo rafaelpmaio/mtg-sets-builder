@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { RecoilRoot } from "recoil";
 import SetsList from "./SetsList";
-import { useGetFilteredSetsList } from "state/hooks/dropdownMenuHooks/useGetFilteredSetsList";
+import { useGetFilteredSetsList } from "state/hooks/stateHooks/filteredSetsListState/useGetFilteredSetsList";
 import { BrowserRouter } from "react-router-dom";
 
 const setsList = [

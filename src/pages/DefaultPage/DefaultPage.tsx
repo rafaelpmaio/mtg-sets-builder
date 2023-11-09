@@ -2,12 +2,12 @@ import { Outlet, useLocation } from "react-router-dom";
 import styles from "./_defaultPage.module.scss";
 import DropdownMenu from "components/DropdownMenu/DropdownMenu";
 import { useEffect } from "react";
-import { useSetDropdownMenuOptions } from "state/hooks/dropdownMenuHooks/useSetDropdownMenuOptions";
-import { useGetDropdownMenuOptions } from "state/hooks/dropdownMenuHooks/useGetDropdownMenuOptions";
+import { useSetDropdownMenuOptions } from "state/hooks/stateHooks/dropdownMenuOptionsState/useSetDropdownMenuOptions";
+import { useGetDropdownMenuOptions } from "state/hooks/stateHooks/dropdownMenuOptionsState/useGetDropdownMenuOptions";
 import { getDropdownOptions } from "utils/getDropdownOptions";
 import { totalSetCost } from "utils/totalSetCost";
 import { totalInvested } from "utils/totalInvested";
-import { useGetUpdatedSet } from "state/hooks/useGetUpdatedSet";
+import { useGetUpdatedSet } from "state/hooks/customHooks/useGetUpdatedSet";
 
 const DefaultPage = () => {
   const setDropdownMenuOptions = useSetDropdownMenuOptions();

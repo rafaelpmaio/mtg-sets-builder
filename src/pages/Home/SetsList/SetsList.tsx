@@ -1,6 +1,6 @@
 import Set from "./Set/Set";
 import styles from "./_setsList.module.scss";
-import { useGetFilteredSetsList } from "state/hooks/dropdownMenuHooks/useGetFilteredSetsList";
+import { useGetFilteredSetsList } from "state/hooks/stateHooks/filteredSetsListState/useGetFilteredSetsList";
 
 const SetsList = () => {
   const setsList = useGetFilteredSetsList();

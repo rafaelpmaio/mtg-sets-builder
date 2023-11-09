@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import AppRoutes from "./AppRoutes";
 import { BrowserRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
-import { useGetFilteredSetsList } from "state/hooks/dropdownMenuHooks/useGetFilteredSetsList";
+import { useGetFilteredSetsList } from "state/hooks/stateHooks/filteredSetsListState/useGetFilteredSetsList";
 
 const collections = [
   {

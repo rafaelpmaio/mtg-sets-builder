@@ -1,12 +1,12 @@
 import ISet from "interfaces/ISet";
-import useSetSetsList from "../setsListHooks/useSetSetsList";
+import useSetSetsList from "../../stateHooks/setsListState/useSetSetsList";
 import { httpMtgJson } from "httpApi";
-import { getSetsUntilYear } from "../../../utils/setsListBuilderFunctions/getSetsUntilYear";
-import { getAllSets } from "../../../utils/setsListBuilderFunctions/getAllSets";
-import { buildSetsList } from "../../../utils/setsListBuilderFunctions/buildSetsList";
-import { useGetSetsList } from "../setsListHooks/useGetSetsList";
+import { getSetsUntilYear } from "../../../../utils/buildSetsListUtils/getSetsUntilYear";
+import { getAllSets } from "../../../../utils/buildSetsListUtils/getAllSets";
+import { buildSetsList } from "../../../../utils/builders/buildSetsList";
+import { useGetSetsList } from "../../stateHooks/setsListState/useGetSetsList";
 
-export const useSetsListBuilder = () => {
+export const useBuildSetsList = () => {
   const setsList = useGetSetsList();
   const setSetsList = useSetSetsList();
   return () => {

@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { RecoilRoot } from "recoil";
 import CardsList from "./CardList";
-import { useGetSelectedSet } from "state/hooks/selectedSetHooks/useGetSelectedSet";
+import { useGetSelectedSet } from "state/hooks/stateHooks/selectedSetState/useGetSelectedSet";
 import ISet from "interfaces/ISet";
 
 const set: ISet = {
