@@ -5,16 +5,18 @@ import { useEffect } from "react";
 import { useSetDropdownMenuOptions } from "state/hooks/stateHooks/dropdownMenuOptionsState/useSetDropdownMenuOptions";
 import { useGetDropdownMenuOptions } from "state/hooks/stateHooks/dropdownMenuOptionsState/useGetDropdownMenuOptions";
 import { getDropdownOptions } from "utils/getDropdownOptions";
-import { totalSetCost } from "utils/totalSetCost";
 import { totalInvested } from "utils/totalInvested";
 import { useGetUpdatedSet } from "state/hooks/customHooks/useGetUpdatedSet";
+import { totalSetCost } from "utils/totalSetCost";
+import { useGetScryfallData } from "state/hooks/stateHooks/scryfallDataState/useGetScryfallData";
 
 const DefaultPage = () => {
   const setDropdownMenuOptions = useSetDropdownMenuOptions();
   const dropdownMenuOptions = useGetDropdownMenuOptions();
   const location = useLocation();
-  
+
   const set = useGetUpdatedSet();
+  const scryfallData = useGetScryfallData();
 
   useEffect(() => {
     setDropdownMenuOptions(getDropdownOptions(location.pathname));
@@ -24,17 +26,19 @@ const DefaultPage = () => {
     <>
       <main>
         <section className={styles.header}>
-          <h2>{set?.name}</h2>
-          <div>
+          <h2 className={styles.set_name}>{set?.name}</h2>
+          <div className={styles.set_infos}>
             <p>
-              Collected: {set?.collectedCardsTotal} /
-              {set?.totalSetSize}
+              Collected: {set?.collectedCardsTotal} /{set?.totalSetSize}
             </p>
-            <p>Total Cost: US${set ? totalSetCost(set) : 'error'} </p>
-            <p>Total Invested: US${set ? totalInvested(set) : 'error'}</p>
+            <p>Total Cost: US${set ? totalSetCost(set, scryfallData) : "error"} </p>
+            <p>Total Invested: US${set ? totalInvested(set) : "error"}</p>
           </div>
+          <DropdownMenu
+            options={dropdownMenuOptions}
+            defaultOption={dropdownMenuOptions[0]}
+          />
         </section>
-        <DropdownMenu options={dropdownMenuOptions} defaultOption={dropdownMenuOptions[0]} />
         <Outlet />
       </main>
     </>

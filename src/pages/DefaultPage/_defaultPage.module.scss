@@ -1,10 +1,27 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  flex-wrap: wrap;
+  background: url("blacklotus.jpg") no-repeat;
+  background-size: 100%;
+  height: 250px;
 
-    p {
-        font-size: 14px;
-        text-align: end;
-    }
+  .set_name {
+    width: 70%;
+  }
+
+  .set_infos {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 1.5rem;
+  }
+
+  p {
+    font-size: 14px;
+    text-align: left;
+  }
 }

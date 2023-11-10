@@ -1,4 +1,4 @@
-import { useSetScryfallCardsData } from "../../stateHooks/scryfallCardsDataState/useSetScryfallCardsData";
+import { useSetScryfallData } from "../../stateHooks/scryfallDataState/useSetScryfallData";
 import { useGetSetsSavedInMemory } from "../../stateHooks/saveSetInMemoryState/useGetSetsSavedInMemory";
 import { useGetSelectedSet } from "../../stateHooks/selectedSetState/useGetSelectedSet";
 import ICard from "interfaces/ICard";
@@ -7,7 +7,7 @@ import { httpScryfall } from "httpApi";
 import { IScryfallData } from "interfaces/IScryfallData";
 
 export const useBuildScryfallData = () => {
-  const setScryfallData = useSetScryfallCardsData();
+  const setScryfallData = useSetScryfallData();
   const saveSetInMemory = useSaveSetInMemory();
   const setsInMemory = useGetSetsSavedInMemory();
   const selectedSet = useGetSelectedSet();
