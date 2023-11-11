@@ -28,8 +28,8 @@ export const useBuildScryfallData = () => {
               const scryfallData = scryfallResponse.data;
               let scryfallCard: IScryfallData = {
                 id: card.id,
-                currentPrice: scryfallData.prices.usd,
-                image: scryfallData.image_uris.small,
+                prices: scryfallData.prices,
+                images: scryfallData.image_uris,
               };
               return scryfallCard;
             });

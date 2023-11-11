@@ -31,8 +31,8 @@ const DefaultPage = () => {
             <p>
               Collected: {set?.collectedCardsTotal} /{set?.totalSetSize}
             </p>
-            <p>Total Cost: US${set ? totalSetCost(set, scryfallData) : "error"} </p>
-            <p>Total Invested: US${set ? totalInvested(set) : "error"}</p>
+            <p>Total Cost: US${set ? totalSetCost(set, scryfallData) : "0"} </p>
+            <p>Total Invested: US${set ? totalInvested(set) : "0"}</p>
           </div>
           <DropdownMenu
             options={dropdownMenuOptions}

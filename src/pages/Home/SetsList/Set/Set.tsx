@@ -16,9 +16,12 @@ const Set = ({ set }: SetProps) => {
   const setSelectedSet = useSetSelectedSet();
 
   return (
-    <li className={styles.container} onClick={() => setSelectedSet(set)}>
+    <li 
+    className={`${styles.container} ${!set.collect ? styles.uncollecting : ''} ${set.isCompleted ? '' : ''}`} 
+    onClick={() => setSelectedSet(set)}
+    >
       <Link to={`/collection/${set.name}`}>
-        <i className={`ss ss-${set.image} ss-3x`}></i>
+        <i className={`ss ss-${set.image} ss-3x  ${set.isCompleted ? 'ss-rare' : ''}`}></i>
         <p>{set.name}</p>
         <p>{`${percentage(set.collectedCardsTotal, set.totalSetSize)}%`}</p>
       </Link>

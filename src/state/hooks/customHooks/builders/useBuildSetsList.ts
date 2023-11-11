@@ -20,7 +20,8 @@ export const useBuildSetsList = () => {
           return getAllSets(mtgJsonSets);
         })
         .then((allSets) => {
-          return getSetsUntilYear(2006, allSets);
+          const filteredSetsList = getSetsUntilYear(2006, allSets);
+          return filteredSetsList;
         })
         .then((filteredSets) => {
           const setsList: ISet[] = buildSetsList(filteredSets);

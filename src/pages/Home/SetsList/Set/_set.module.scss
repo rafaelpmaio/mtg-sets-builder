@@ -2,8 +2,7 @@
 
 .container {
   display: grid;
-  grid-template-areas:
-      "link link link checkbox";
+  grid-template-areas: "link link link checkbox";
   position: relative;
   gap: 10px;
   height: 80px;
@@ -23,6 +22,12 @@
       "logo percentage percentage";
     gap: 10px;
     cursor: pointer;
+
+    :visited,
+    :hover,
+    :active {
+      color: black;
+    }
 
     i {
       grid-area: logo;
@@ -48,4 +53,8 @@
       margin: 0;
     }
   }
+}
+
+.uncollecting {
+  filter: grayscale(1);
 }
