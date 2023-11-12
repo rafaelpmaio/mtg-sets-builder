@@ -14,25 +14,37 @@ const DefaultPage = () => {
   const setDropdownMenuOptions = useSetDropdownMenuOptions();
   const dropdownMenuOptions = useGetDropdownMenuOptions();
   const location = useLocation();
+  const pathname = location.pathname;
 
   const set = useGetUpdatedSet();
   const scryfallData = useGetScryfallData();
 
   useEffect(() => {
-    setDropdownMenuOptions(getDropdownOptions(location.pathname));
+    setDropdownMenuOptions(getDropdownOptions(pathname));
   }, [location]);
 
   return (
     <>
       <main>
         <section className={styles.header}>
-          <h2 className={styles.set_name}>{set?.name}</h2>
           <div className={styles.set_infos}>
+            <h2 className={styles.set_name}>{set?.name}</h2>
             <p>
-              Collected: {set?.collectedCardsTotal} /{set?.totalSetSize}
+              Collected: <b>{set?.collectedCardsTotal} /{set?.totalSetSize} </b>
             </p>
-            <p>Total Cost: US${set ? totalSetCost(set, scryfallData) : "0"} </p>
-            <p>Total Invested: US${set ? totalInvested(set) : "0"}</p>
+            {String(pathname).includes("/collection") ? (
+              <>
+                <p>
+                  Total Cost (usd):  
+                  <b>{set ? totalSetCost(set, scryfallData) : "0"}</b>
+                </p>
+                <p>
+                  Total Invested (usd): <b>{set ? totalInvested(set) : "0"}</b>
+                </p>
+              </>
+            ) : (
+              ""
+            )}
           </div>
           <DropdownMenu
             options={dropdownMenuOptions}

@@ -14,6 +14,7 @@ const Card = ({ card }: CardProps) => {
   const toggleCardCollectStatus = useToggleCardCollectStatus();
   const scryfallCard = useGetScryfallCard(card);
 
+  console.log('teste')
   const imageSmall = getValueWithKey("small", scryfallCard?.images);
   const priceUsd = getValueWithKey("usd", scryfallCard?.prices);
 
