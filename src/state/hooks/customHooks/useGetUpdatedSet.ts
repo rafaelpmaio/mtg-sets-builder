@@ -1,4 +1,5 @@
 import ISet from "interfaces/ISet";
+import { toast } from "react-toastify";
 import { useGetSelectedSet } from "state/hooks/stateHooks/selectedSetState/useGetSelectedSet";
 import { useGetSetsList } from "state/hooks/stateHooks/setsListState/useGetSetsList";
 
@@ -7,7 +8,7 @@ export const useGetUpdatedSet = () => {
   const selectedSet = useGetSelectedSet();
 
   if (!selectedSet) {
-    console.log("no SET selected!");
+    toast('please, select a Set')
     return ;
   }
 
@@ -15,7 +16,7 @@ export const useGetUpdatedSet = () => {
     (set) => set.id === selectedSet.id
   );
   if (!set) {
-    console.log("fail to find the selected SET");
+    toast.error("could not find the selected SET");
     return;
   }
   return set;

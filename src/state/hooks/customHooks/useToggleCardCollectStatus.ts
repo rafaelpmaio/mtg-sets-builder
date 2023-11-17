@@ -2,6 +2,7 @@ import ICard from "interfaces/ICard";
 import { useGetUpdatedSet } from "./useGetUpdatedSet";
 import useSetSetsList from "../stateHooks/setsListState/useSetSetsList";
 import { useGetSetsList } from "../stateHooks/setsListState/useGetSetsList";
+import { toast } from "react-toastify";
 
 export const useToggleCardCollectStatus = () => {
   const prevList = useGetSetsList();
@@ -17,7 +18,7 @@ export const useToggleCardCollectStatus = () => {
 
   return (selectedCard: ICard, checkStatus: boolean = false) => {
     if (!setOfTheCard) {
-      console.log("não pudemos encontrar o SET desta carta");
+      toast.error("we could not find the Set of the selected card");
       return;
     }
     const updatedCardsList = setOfTheCard.cards.map((card) => {

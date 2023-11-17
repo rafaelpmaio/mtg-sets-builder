@@ -5,6 +5,7 @@ import { useBuildScryfallData } from "state/hooks/customHooks/builders/useBuildS
 import { useEffect } from "react";
 import { useGetUpdatedSet } from "state/hooks/customHooks/useGetUpdatedSet";
 import { useUpdateCompletedSetStatus } from "state/hooks/customHooks/useUpdateCompletedSetStatus";
+import { toast } from "react-toastify";
 
 const SetPage = () => {
   const set = useGetUpdatedSet();
@@ -16,9 +17,7 @@ const SetPage = () => {
     updateCompletedStatus(set);
     cardsList
       ? buildScryfallData(cardsList)
-      : console.log(
-          "CardsList não foi encontrada para buscar dados da api Scryfall"
-        );
+      : toast.error("could not find cards data from Scryfall") 
   }, [cardsList]);
 
   return (

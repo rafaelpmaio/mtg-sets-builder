@@ -1,6 +1,7 @@
 import ISet from "interfaces/ISet";
 import useSetSetsList from "../stateHooks/setsListState/useSetSetsList";
 import { useGetSetsList } from "../stateHooks/setsListState/useGetSetsList";
+import { toast } from "react-toastify";
 
 export const useUpdateCompletedSetStatus = () => {
   const toggleCollectFromList = useSetSetsList();
@@ -8,7 +9,7 @@ export const useUpdateCompletedSetStatus = () => {
 
   return (selectedSet: ISet | undefined) => {
     if (!selectedSet) {
-      console.log("no set found");
+      toast.error("we couldn't find the selected Set to update");
       return;
     }
     const cardsList = selectedSet.cards;
@@ -19,7 +20,6 @@ export const useUpdateCompletedSetStatus = () => {
     let isCompleted: boolean = false;
 
     totalCardsCollected === cardsList.length ? isCompleted = true : isCompleted = false
-    console.log(totalCardsCollected)
 
     toggleCollectFromList(
       prevList.map((set) => {

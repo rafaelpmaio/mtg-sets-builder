@@ -15,13 +15,12 @@ export const useBuildScryfallData = () => {
 
   return (cardsList: ICard[]) => {
     if (!selectedSet) {
-      console.log("nenhum set encontrado");
+      toast.error("no Set found!");
       return;
     }
 
     if (!setsInMemory.includes(selectedSet.id)) {
       const loading = toast.loading('give me a minute to load the cards!')
-      console.log("fez nova requisição ao Scryfall");
       const scryfallCardArray: Promise<IScryfallData>[] = cardsList.map(
         (card) => {
           let scryfallCard = httpScryfall
@@ -44,6 +43,6 @@ export const useBuildScryfallData = () => {
         saveSetInMemory(selectedSet);
         toast.update(loading, {render:'There they are!', type: "success", isLoading:false, autoClose:2000})
       });
-    } else console.log("SET já salvo! não fez nova requisição ao Scryfall");
+    } 
   };
 };
