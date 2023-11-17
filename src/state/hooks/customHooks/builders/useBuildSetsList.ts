@@ -5,12 +5,14 @@ import { getSetsUntilYear } from "../../../../utils/buildSetsListUtils/getSetsUn
 import { getAllSets } from "../../../../utils/buildSetsListUtils/getAllSets";
 import { buildSetsList } from "../../../../utils/builders/buildSetsList";
 import { useGetSetsList } from "../../stateHooks/setsListState/useGetSetsList";
+import {toast} from 'react-toastify';
 
 export const useBuildSetsList = () => {
   const setsList = useGetSetsList();
   const setSetsList = useSetSetsList();
   return () => {
     if (!setsList.length) {
+      const loading = toast.loading('loading Sets, this may take a little while!');
       httpMtgJson
         .get("AllPrintings.json")
         .then((res) => {
@@ -25,8 +27,8 @@ export const useBuildSetsList = () => {
         })
         .then((filteredSets) => {
           const setsList: ISet[] = buildSetsList(filteredSets);
-          console.log("não existe, fez novo", setsList);
           setSetsList(setsList);
+          toast.update(loading, {render: "Everything's ready!", type:"success", isLoading: false, autoClose:2000})
         });
     }
   };

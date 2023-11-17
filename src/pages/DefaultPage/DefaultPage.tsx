@@ -35,12 +35,12 @@ const DefaultPage = () => {
             {String(pathname).includes("/collection") ? (
               <>
                 <p>
-                  Total Cost (usd):  
+                  Total Set Cost (usd):  
                   <b>{set ? totalSetCost(set, scryfallData) : "0"}</b>
                 </p>
-                <p>
+                {/* <p>
                   Total Invested (usd): <b>{set ? totalInvested(set) : "0"}</b>
-                </p>
+                </p> */}
               </>
             ) : (
               ""

@@ -5,6 +5,7 @@ import ICard from "interfaces/ICard";
 import { useSaveSetInMemory } from "../../stateHooks/saveSetInMemoryState/useSaveSetInMemory";
 import { httpScryfall } from "httpApi";
 import { IScryfallData } from "interfaces/IScryfallData";
+import { toast } from "react-toastify";
 
 export const useBuildScryfallData = () => {
   const setScryfallData = useSetScryfallData();
@@ -19,6 +20,7 @@ export const useBuildScryfallData = () => {
     }
 
     if (!setsInMemory.includes(selectedSet.id)) {
+      const loading = toast.loading('give me a minute to load the cards!')
       console.log("fez nova requisição ao Scryfall");
       const scryfallCardArray: Promise<IScryfallData>[] = cardsList.map(
         (card) => {
@@ -40,6 +42,7 @@ export const useBuildScryfallData = () => {
       Promise.all(scryfallCardArray).then((scryfallCardArray) => {
         setScryfallData(scryfallCardArray);
         saveSetInMemory(selectedSet);
+        toast.update(loading, {render:'There they are!', type: "success", isLoading:false, autoClose:2000})
       });
     } else console.log("SET já salvo! não fez nova requisição ao Scryfall");
   };
