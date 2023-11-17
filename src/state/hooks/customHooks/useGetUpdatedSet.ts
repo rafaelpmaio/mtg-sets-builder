@@ -8,8 +8,7 @@ export const useGetUpdatedSet = () => {
   const selectedSet = useGetSelectedSet();
 
   if (!selectedSet) {
-    toast('please, select a Set')
-    return ;
+    return;
   }
 
   const set: ISet | undefined = setsList.find(

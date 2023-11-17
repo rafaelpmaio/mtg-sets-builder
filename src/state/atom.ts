@@ -18,9 +18,9 @@ export const selectedSetState = atom<ISet | null>({
   default: null,
 });
 
-export const filteredCardsListState = atom<ICard[] | null>({
+export const filteredCardsListState = atom<ICard[] >({
   key: "filteredCardsListState",
-  default: null,
+  default: [],
 });
 
 export const scryfallCardsDataState = atom<IScryfallData[]>({
