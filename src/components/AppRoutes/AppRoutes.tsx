@@ -1,19 +1,20 @@
-import SetPage from "pages/SetPage/SetPage";
-import DefaultPage from "pages/DefaultPage/DefaultPage";
 import Home from "pages/Home/Home";
 import { Route, Routes } from "react-router-dom";
 import { RecoilRoot } from "recoil";
+import { LocalizationProvider } from "@mui/x-date-pickers"
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns"
+
+
 
 const AppRoutes = () => {
   return (
-    <RecoilRoot>
-      <Routes>
-        <Route path="/" element={<DefaultPage />}>
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <RecoilRoot>
+        <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/collection/:name" element={<SetPage />} />
-        </Route>
-      </Routes>
-    </RecoilRoot>
+        </Routes>
+      </RecoilRoot>
+    </LocalizationProvider>
   );
 };
 
