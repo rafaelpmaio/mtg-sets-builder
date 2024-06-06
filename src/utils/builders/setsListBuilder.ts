@@ -1,9 +1,9 @@
-import { cardsListFactory } from "utils/factories/cardsListFactory";
+import { cardsListBuilder } from "utils/builders/cardsListBuilder";
 import { setFactory } from "utils/factories/setFactory";
 
-export const buildSetsList = (filteredSets: { releaseDate: string }[]) => {
+export const setsListBuilder = (filteredSets: { releaseDate: string }[]) => {
   const setsList = filteredSets.map((set) => {
-    const cardsList = cardsListFactory(set);
+    const cardsList = cardsListBuilder(set);
     const newSet = setFactory(set, cardsList);
     return newSet;
   });

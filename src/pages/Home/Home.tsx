@@ -1,23 +1,29 @@
-import { useBuildSetsList } from "state/hooks/customHooks/builders/useBuildSetsList";
-import { Box, Button, Stack, TextField } from "@mui/material";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { useState } from "react";
+import { Box, Stack, ToggleButtonGroup, ToggleButton, Accordion, AccordionSummary, AccordionDetails, Typography } from "@mui/material";
+import DateRangeSelector from "components/DateRangeSelector";
+import React, { useState } from "react";
+
 
 const Home = () => {
-  const buildSets = useBuildSetsList();
-  const [startDate, setStartDate] = useState<Date | null>(new Date('1993-08-05'));
-  const [endDate, setEndDate] = useState<Date | null>(null);
+  const [language, setLanguage] = useState("pt-BR")
 
-  const handleClick = () => {
-    alert("click")
-  }
-
-  const validDateRange = () => {
-    if (endDate === null || startDate === null) {
-      return false;
+  const handleLanguageChange = (_event: React.MouseEvent<HTMLElement>, updatedLanguage: string) => {
+    if (updatedLanguage === null) {
+      updatedLanguage = language
     }
-    return endDate < startDate;
+    setLanguage(updatedLanguage);
   }
+
+  const accordionData = [
+    {
+      summary: "About",
+      details: "teste de details"
+    },
+    {
+      summary: "teste2",
+      details: "teste de details2"
+    },
+  ]
+
 
   return (
     <Box
@@ -25,40 +31,38 @@ const Home = () => {
       gap={4}
       sx={{ width: "100vw", height: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}
     >
-      <Stack
-        spacing={4}
-        direction="row"
-        sx={{ width: "500px", display: "flex", alignItems: "center" }}
-      >
-        <DatePicker
-          label="Start Date"
-          value={startDate}
+      <Stack direction="row">
+        <ToggleButtonGroup
+          aria-label="language options"
+          value={language}
+          onChange={handleLanguageChange}
+          exclusive
 
-          onChange={(newValue) => setStartDate(newValue)}
-
-        />
-        <Box sx={{ mx: 2 }}>to</Box>
-        <DatePicker
-          label="End Date"
-          value={endDate}
-          slotProps={{
-            textField: {
-              error: validDateRange(),
-              helperText: validDateRange() && "End date must be after the initial"
-            }
-          }}
-          onChange={(newValue) => setEndDate(newValue)
-          }
-        />
+        >
+          <ToggleButton value="pt-BR" aria-label="pt-BR">pt</ToggleButton>
+          <ToggleButton value="en-US" aria-label="en-US">us</ToggleButton>
+        </ToggleButtonGroup>
       </Stack>
-      <Button
-        variant="contained"
-        onClick={handleClick}
-        disabled={!endDate || validDateRange()}
 
-      >
-        generate
-      </Button>
+      <DateRangeSelector />
+
+      <Stack sx={{ width: "500px" }}>
+
+        { language === "pt-BR" && accordionData.map((data, index) => (
+          <Accordion >
+            <AccordionSummary
+              id={`panel${index}-header`}
+              aria-controls={`panel${index}-content`}
+            // expandIcon={<ExpandMoreIcon />}
+            >
+              <Typography>{data.summary}</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography>{data.details}</Typography>
+            </AccordionDetails>
+          </Accordion>))}
+      </Stack>
+
     </Box>
   );
 };

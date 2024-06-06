@@ -1,6 +1,6 @@
 import { sortByReleaseDate } from "utils/sortByReleaseDate";
 
-export const getSetsUntilYear = (
+export const filterSetsByDateRange = (
   untilYear: number,
   allSets: { releaseDate: string }[]
 ) => {

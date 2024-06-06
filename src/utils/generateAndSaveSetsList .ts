@@ -1,12 +1,12 @@
 import { httpMtgJson } from "httpApi";
-import { getSetsUntilYear } from "utils/buildSetsListUtils/getSetsUntilYear";
-import { getAllSets } from "utils/buildSetsListUtils/getAllSets";
+import { filterSetsByDateRange } from "utils/filterSetsByDateRange";
+import { getAllSets } from "utils/getAllSets";
 import { saveAs } from 'file-saver';
-import { buildSetsList } from "utils/builders/buildSetsList";
+import { setsListBuilder } from "utils/builders/setsListBuilder";
 import ISet from "interfaces/ISet";
 import { toast } from "react-toastify";
 
-export const useBuildSetsList = () => {
+export const generateAndSaveSetsList  = () => {
   return () => {
     const loading = toast.loading('getting file, this may take a little while!');
     httpMtgJson
@@ -18,10 +18,10 @@ export const useBuildSetsList = () => {
         return getAllSets(mtgJsonSets);
       })
       .then((allSets) => {
-        const filteredSetsList = getSetsUntilYear(2006, allSets);
+        const filteredSetsList = filterSetsByDateRange(2006, allSets);
         return filteredSetsList
       }).then((filteredSets) => {
-        const setsList: ISet[] = buildSetsList(filteredSets);
+        const setsList: ISet[] = setsListBuilder(filteredSets);
         const setsString = JSON.stringify(setsList)
         const blob = new Blob([setsString], { type: "application/json" });
         saveAs(blob, "data.json");
