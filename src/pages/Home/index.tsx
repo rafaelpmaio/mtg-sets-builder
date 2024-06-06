@@ -1,7 +1,17 @@
-import { Box, Stack, ToggleButtonGroup, ToggleButton, Accordion, AccordionSummary, AccordionDetails, Typography } from "@mui/material";
+import {
+  Box,
+  Stack,
+  ToggleButtonGroup,
+  ToggleButton,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography
+} from "@mui/material";
 import DateRangeSelector from "components/DateRangeSelector";
 import React, { useState } from "react";
-
+import { US, BR } from 'country-flag-icons/react/3x2'
+import styles from './flag.module.css'
 
 const Home = () => {
   const [language, setLanguage] = useState("pt-BR")
@@ -39,16 +49,19 @@ const Home = () => {
           exclusive
 
         >
-          <ToggleButton value="pt-BR" aria-label="pt-BR">pt</ToggleButton>
-          <ToggleButton value="en-US" aria-label="en-US">us</ToggleButton>
+          <ToggleButton value="pt-BR" aria-label="pt-BR" sx={{ padding: 0 }} >
+            <BR title="Brasil" className={`${styles.flag} ${language !== "pt-BR" && styles.flag_inative}`} />
+          </ToggleButton>
+          <ToggleButton value="en-US" aria-label="en-US" sx={{ padding: 0 }}>
+            <US title="United States" className={`${styles.flag} ${language !== "en-US" && styles.flag_inative}`} />
+          </ToggleButton>
         </ToggleButtonGroup>
       </Stack>
 
       <DateRangeSelector />
 
       <Stack sx={{ width: "500px" }}>
-
-        { language === "pt-BR" && accordionData.map((data, index) => (
+        {accordionData.map((data, index) => (
           <Accordion >
             <AccordionSummary
               id={`panel${index}-header`}

@@ -1,4 +1,4 @@
-import { Box, Button, FormControl, Stack } from "@mui/material";
+import { Box, Button, FormControl, FormHelperText, Stack } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
 import { useState } from "react";
 import { generateAndSaveSetsList } from "utils/generateAndSaveSetsList ";
@@ -21,17 +21,26 @@ export default function DateRangeSelector() {
         return endDate < startDate;
     }
 
+    const helperText = [
+        {
+            lang: "pt-BR",
+            text: "A data de término deve ser maior que a inicial"
+        },
+        {
+            lang: "en-US",
+            text: "End date must be after the initial"
+        },
+    ]
+
     return (
         <>
-            <Stack
-                spacing={4}
-                direction="row"
-                sx={{ width: "500px", display: "flex", alignItems: "center" }}
+            <FormControl
+                sx={{ width: "500px", display: "flex", alignItems: "center", gap: 1 }}
             >
+
                 <DatePicker
                     label="Start Date"
                     value={startDate}
-
                     onChange={(newValue) => setStartDate(newValue)}
 
                 />
@@ -42,13 +51,16 @@ export default function DateRangeSelector() {
                     slotProps={{
                         textField: {
                             error: validDateRange(),
-                            helperText: validDateRange() && "End date must be after the initial"
                         }
                     }}
                     onChange={(newValue) => setEndDate(newValue)
                     }
                 />
-            </Stack>
+                {validDateRange() &&
+                    <FormHelperText error={validDateRange()}>
+                        
+                    </FormHelperText>}
+            </FormControl>
             <Button
                 variant="contained"
                 onClick={handleClick}
