@@ -1,12 +1,24 @@
-import { Box, Button, FormControl, FormHelperText, Stack } from "@mui/material";
+import { Box, Button, FormControl, FormHelperText, Typography } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
 import { useState } from "react";
+import filterLanguage from "utils/filterLanguage";
 import { generateAndSaveSetsList } from "utils/generateAndSaveSetsList ";
 
+const helperTextArr = [
+    {
+        language: "pt-BR",
+        text: "selecione o período que dejeja buscar",
+        error: "A data de término deve ser maior que a inicial"
+    },
+    {
+        language: "en-US",
+        text: "select the date range of your search",
+        error: "End date must be after the initial"
+    },
+]
 
-export default function DateRangeSelector() {
+export default function DateRangeSelector({ language }: { language: string }) {
     const buildSets = generateAndSaveSetsList();
-
     const [startDate, setStartDate] = useState<Date | null>(new Date('1993-08-05'));
     const [endDate, setEndDate] = useState<Date | null>(null);
 
@@ -21,23 +33,16 @@ export default function DateRangeSelector() {
         return endDate < startDate;
     }
 
-    const helperText = [
-        {
-            lang: "pt-BR",
-            text: "A data de término deve ser maior que a inicial"
-        },
-        {
-            lang: "en-US",
-            text: "End date must be after the initial"
-        },
-    ]
+    const helperText = filterLanguage(helperTextArr, language)
 
     return (
         <>
             <FormControl
-                sx={{ width: "500px", display: "flex", alignItems: "center", gap: 1 }}
+                sx={{ width: "500px", display: "flex", alignItems: "center", gap: 2 }}
             >
-
+                <FormHelperText >
+                    <Typography> {helperText[0].text} </Typography>
+                </FormHelperText>
                 <DatePicker
                     label="Start Date"
                     value={startDate}
@@ -58,7 +63,7 @@ export default function DateRangeSelector() {
                 />
                 {validDateRange() &&
                     <FormHelperText error={validDateRange()}>
-                        
+                        {helperText[0].error}
                     </FormHelperText>}
             </FormControl>
             <Button
