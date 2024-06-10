@@ -2,37 +2,7 @@ import { Accordion, AccordionDetails, AccordionSummary, Stack, Typography } from
 import { useState } from "react";
 import filterLanguage from "utils/filterLanguage";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
-const accordionDataArr = [
-    {
-        language: "pt-BR",
-        data: [{
-            title: "Sobre",
-            description: "teste de details"
-        }, {
-            title: "Sobre",
-            description: "teste de details"
-        }, {
-            title: "Sobre",
-            description: "teste de details"
-        }]
-    },
-    {
-        language: "en-US",
-        data: [{
-            title: "About",
-            description: "teste de details2"
-        }, {
-            title: "About",
-            description: "teste de details2"
-        },
-        {
-            title: "About",
-            description: "teste de details2"
-        },]
-    },
-]
-
+import { accordionDataArr } from "assets/accordionDataArr";
 
 export default function InformationsDisplay({ language }: { language: string }) {
     const [expanded, setExpanded] = useState<string | false>(false)
@@ -45,7 +15,7 @@ export default function InformationsDisplay({ language }: { language: string }) 
     }
 
     return (
-        <Stack sx={{ width: "100%", maxWidth:"500px"}} >
+        <Stack sx={{ width: "100%", maxWidth: "500px" }} >
             {accordionData.map((data, index) => (
                 <Accordion
                     expanded={expanded === `panel${index}`}
@@ -56,10 +26,10 @@ export default function InformationsDisplay({ language }: { language: string }) 
                         aria-controls={`panel${index}-content`}
                         expandIcon={<ExpandMoreIcon />}
                     >
-                        <Typography>{data.title}</Typography>
+                        <Typography variant="h6" component="div">{data.title}</Typography>
                     </AccordionSummary>
                     <AccordionDetails >
-                        <Typography>{data.description}</Typography>
+                        <Typography variant="body2" color="text.secondary">{data.description}</Typography>
                     </AccordionDetails>
                 </Accordion>))}
         </Stack>

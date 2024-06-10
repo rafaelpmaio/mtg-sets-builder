@@ -1,29 +1,19 @@
-import { Box, Button, FormControl, FormHelperText, Typography } from "@mui/material";
+import { Button, FormControl, FormHelperText, Typography } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
+import { helperTextArr } from "assets/helperTextArr";
 import { useState } from "react";
 import filterLanguage from "utils/filterLanguage";
 import { generateAndSaveSetsList } from "utils/generateAndSaveSetsList ";
 
-const helperTextArr = [
-    {
-        language: "pt-BR",
-        text: "selecione o período que dejeja buscar",
-        error: "A data de término deve ser maior que a inicial"
-    },
-    {
-        language: "en-US",
-        text: "select the date range of your search",
-        error: "End date must be after the initial"
-    },
-]
+
 
 export default function DateRangeSelector({ language }: { language: string }) {
-    const buildSets = generateAndSaveSetsList();
-    const [startDate, setStartDate] = useState<Date | null>(new Date('1993-08-05'));
+    const [startDate, setStartDate] = useState<Date | null>(null);
     const [endDate, setEndDate] = useState<Date | null>(null);
-
+    const buildSets = generateAndSaveSetsList(startDate, endDate);
+    
     const handleClick = () => {
-        buildSets();
+        buildSets()
     }
 
     const validDateRange = () => {
@@ -34,7 +24,7 @@ export default function DateRangeSelector({ language }: { language: string }) {
     }
 
     const helperText = filterLanguage(helperTextArr, language)
-
+    console.log(startDate)
     return (
         <>
             <FormControl
@@ -44,14 +34,13 @@ export default function DateRangeSelector({ language }: { language: string }) {
                     <Typography> {helperText[0].text} </Typography>
                 </FormHelperText>
                 <DatePicker
-                    label="Start Date"
+                    label="de / from"
                     value={startDate}
                     onChange={(newValue) => setStartDate(newValue)}
 
                 />
-                <Box sx={{ mx: 2 }}>to</Box>
                 <DatePicker
-                    label="End Date"
+                    label="até / untill"
                     value={endDate}
                     slotProps={{
                         textField: {

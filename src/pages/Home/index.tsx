@@ -8,8 +8,12 @@ import {
 import DateRangeSelector from "components/DateRangeSelector";
 import React, { useState } from "react";
 import { US, BR } from 'country-flag-icons/react/3x2'
-import styles from './flag.module.css'
+import styles from './Home.module.css'
 import InformationsDisplay from "components/InformationsDisplay";
+import filterLanguage from "utils/filterLanguage";
+import { imageSrcArr } from "assets/imageSrcArr";
+import 'normalize.css';
+
 
 const Home = () => {
   const [language, setLanguage] = useState("pt-BR")
@@ -21,29 +25,28 @@ const Home = () => {
     setLanguage(updatedLanguage);
   }
 
+  const selectedImage = filterLanguage(imageSrcArr, language);
+  const src = selectedImage[0].src;
+
   return (
     <Box
       component="main"
       gap={4}
-      sx={{
-        width: "100vw",
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        padding:"2em"
-      }}
+      width="100vw"
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      bgcolor="#eeeeee"
+      padding={2}
     >
       <Paper
         component="img"
         height="160px"
-        src={"https://i.imgur.com/FgYN76O.png"}
+        src={src}
         alt="app fluxogram"
-        sx={{
-        }}
+        elevation={4}
       />
-      {/* https://i.imgur.com/J5S24vQ.png */}
       <Stack direction="row">
         <ToggleButtonGroup
           aria-label="language options"
@@ -59,7 +62,6 @@ const Home = () => {
           </ToggleButton>
         </ToggleButtonGroup>
       </Stack>
-
       <DateRangeSelector language={language} />
       <InformationsDisplay language={language} />
     </Box>
