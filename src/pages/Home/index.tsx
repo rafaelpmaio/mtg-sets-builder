@@ -3,6 +3,7 @@ import {
   Stack,
   ToggleButtonGroup,
   ToggleButton,
+  Paper,
 } from "@mui/material";
 import DateRangeSelector from "components/DateRangeSelector";
 import React, { useState } from "react";
@@ -24,8 +25,25 @@ const Home = () => {
     <Box
       component="main"
       gap={4}
-      sx={{ width: "100vw", height: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}
+      sx={{
+        width: "100vw",
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        padding:"2em"
+      }}
     >
+      <Paper
+        component="img"
+        height="160px"
+        src={"https://i.imgur.com/FgYN76O.png"}
+        alt="app fluxogram"
+        sx={{
+        }}
+      />
+      {/* https://i.imgur.com/J5S24vQ.png */}
       <Stack direction="row">
         <ToggleButtonGroup
           aria-label="language options"
@@ -41,8 +59,9 @@ const Home = () => {
           </ToggleButton>
         </ToggleButtonGroup>
       </Stack>
+
       <DateRangeSelector language={language} />
-      <InformationsDisplay language={language}/>
+      <InformationsDisplay language={language} />
     </Box>
   );
 };

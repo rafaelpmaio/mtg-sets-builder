@@ -45,7 +45,7 @@ export default function InformationsDisplay({ language }: { language: string }) 
     }
 
     return (
-        <Stack sx={{ width: "500px" }}>
+        <Stack sx={{ width: "100%", maxWidth:"500px"}} >
             {accordionData.map((data, index) => (
                 <Accordion
                     expanded={expanded === `panel${index}`}
@@ -54,11 +54,11 @@ export default function InformationsDisplay({ language }: { language: string }) 
                     <AccordionSummary
                         id={`panel${index}-header`}
                         aria-controls={`panel${index}-content`}
-                    expandIcon={<ExpandMoreIcon />}
+                        expandIcon={<ExpandMoreIcon />}
                     >
                         <Typography>{data.title}</Typography>
                     </AccordionSummary>
-                    <AccordionDetails>
+                    <AccordionDetails >
                         <Typography>{data.description}</Typography>
                     </AccordionDetails>
                 </Accordion>))}
