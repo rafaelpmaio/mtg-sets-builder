@@ -8,7 +8,7 @@ import {
 import DateRangeSelector from "components/DateRangeSelector";
 import React, { useState } from "react";
 import { US, BR } from 'country-flag-icons/react/3x2'
-import styles from './Home.module.css'
+import styles from 'styles/styles.module.css'
 import InformationsDisplay from "components/InformationsDisplay";
 import filterLanguage from "utils/filterLanguage";
 import { imageSrcArr } from "assets/imageSrcArr";

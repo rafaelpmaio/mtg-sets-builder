@@ -1,8 +1,0 @@
-.flag {
-    width: 100%;
-    height: 25px;
-}
-
-.flag_inative {
-    filter: grayscale(100%);
-}

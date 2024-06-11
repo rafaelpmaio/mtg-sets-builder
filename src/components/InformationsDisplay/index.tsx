@@ -29,7 +29,7 @@ export default function InformationsDisplay({ language }: { language: string }) 
                         <Typography variant="h6" component="div">{data.title}</Typography>
                     </AccordionSummary>
                     <AccordionDetails >
-                        <Typography variant="body2" color="text.secondary">{data.description}</Typography>
+                        <Typography variant="body2" color="text.secondary" component="div" dangerouslySetInnerHTML={{ __html: data.description } }/>
                     </AccordionDetails>
                 </Accordion>))}
         </Stack>

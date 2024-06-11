@@ -3,63 +3,67 @@ export const accordionDataArr = [
         language: "pt-BR",
         data: [{
             title: "Sobre",
-            description: "Aplicativo que requisita dados da api mtgJson, filtra os sets de acordo com o período de lançamento selecionado e baixa o arquivo JSON criado."
+            description:
+                `
+            Aplicativo que requisita dados de coleções de MTG e estrutura no formato ISet*
+            <h4>ISet </h4>{
+                <ul>
+                    <li><span>id</span>: string;</li>
+                    <li><span>name</span>: string;</li>
+                    <li><span>image</span>: string;</li>
+                    <li><span>totalSetSize</span>: number;</li>
+                    <li><span>collectedCardsTotal</span>: number;</li>
+                    <li><span>releaseDate?</span>: string;</li>
+                    <li><span>block?</span>: string; </li>
+                    <li><span>collect</span>: boolean; </li>
+                    <li><span>isCompleted</span>: boolean; </li>
+                    <li><span>cards</span>: ICard[]; </li>
+                </ul>
+              }`
+
         }, {
             title: "Objetivo",
-            description: `Solucionar o desafio de tempo de carregamento do webApp MTG Collection, através da estruturação de um arquivo JSON com objetos ISet*. Desta forma este aplicativo assume a função de requisitar o arquivo recebido da api mtgJson e tratá-lo, e o MTG Collection app apenas lê o arquivo e apresenta seu conteúdo ao usuário final, diminuindo consideravelmente o tempo de carregamento.
-            
-            ISet {
-                id: string;
-                name: string;
-                image: string;
-                totalSetSize: number;
-                collectedCardsTotal: number;
-                releaseDate?: string;
-                block?: string; //the block name the set is
-                collect: boolean;
-                isCompleted: boolean;
-                cards: ICard[];
-              }
+            description:
+                `Este projeto foi elaborado para enfrentar um desafio significativo enfrentado pelo aplicativo MTG Collection: tempo de carregamento prolongado. Assumindo a tarefa crucial de lidar com a solicitação HTTP para arquivos de dados extensos da API mtgJson, ele filtra meticulosamente os dados com base no intervalo de datas de lançamento das coleções selecionado e os estrutura de forma eficiente em um arquivo JSON contendo objetos ISet personalizados para integração no aplicativo final.
               `
         }, {
-            title: "Descrição",
-            description: "Aplicação criada utilizando React junto com Typescript, para a requisição HTTP foi utilizado a biblioteca Axios, e material Material-UI para a criação dos componentes."
-        },
-        {
-            title: "Tecnologias",
-            description: "React | Typescript | Axios | Material-UI"
-        }]
+            title: "Descrição / Tecnologias",
+            description: `Aplicação criada utilizando React junto com Typescript, para a requisição HTTP foi utilizado a biblioteca Axios, e material Material-UI para a criação dos componentes.<br><br>
+            <strong> React | Typescript | Axios | Material-UI </strong>`
+        }
+        ]
     },
     {
         language: "en-US",
         data: [{
             title: "About",
-            description: "App that request data from mtgJson api, filter the sets by the selected release date range and download the JSON file."
+            description:
+                `
+            Application that request MTG card sets data and structure them into ISet format.
+            <h4>ISet </h4>{
+                <ul>
+                    <li><span>id</span>: string;</li>
+                    <li><span>name</span>: string;</li>
+                    <li><span>image</span>: string;</li>
+                    <li><span>totalSetSize</span>: number;</li>
+                    <li><span>collectedCardsTotal</span>: number;</li>
+                    <li><span>releaseDate?</span>: string;</li>
+                    <li><span>block?</span>: string; </li>
+                    <li><span>collect</span>: boolean; </li>
+                    <li><span>isCompleted</span>: boolean; </li>
+                    <li><span>cards</span>: ICard[]; </li>
+                </ul>
+              }`
         }, {
             title: "Goal",
-            description: `Resolve the faced challenge of big loading time from the webApp MTG Collection by structuring a JSON file with ISet* objects. By doing this, the application assumes the responsability of requesting the file receive from mtgJson api and processing it, and the MTG Collection app only reads the file and display it for the final user, reducing considerably the loading time.
-            
-            ISet {
-            id: string;
-            name: string;
-            image: string;
-            totalSetSize: number;
-            collectedCardsTotal: number;
-            releaseDate?: string;
-            block?: string; //the block name the set is
-            collect: boolean;
-            isCompleted: boolean;
-            cards: ICard[];
+            description:
+                `This project was crafted to tackle a significant challenge faced by the MTG Collection app: prolonged loading times. Taking on the crucial task of handling HTTP requests for extensive data files from the mtgJson API, it meticulously filters the data based on the selected date range of the card sets release date, and efficiently structures it into a JSON file containing ISet objects tailored for integration into the final application.`
+        },
+        {
+            title: "Description / Tools",
+            description: `Application created using React along with Typescript, axios lib was used for the HTTP request, and Material-UI material to create the components. <br><br>
+            <strong> React | Typescript | Axios | Material-UI  </strong>`
         }
-            `
-        },
-        {
-            title: "Description",
-            description: "Application created using React along with Typescript, axios lib was used for the HTTP request, and Material-UI material to create the components."
-        },
-        {
-            title: "Tools",
-            description: "React | Typescript | Axios | Material-UI"
-        },]
+        ]
     },
 ]

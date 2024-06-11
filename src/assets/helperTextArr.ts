@@ -1,12 +1,12 @@
 export const helperTextArr = [
     {
         language: "pt-BR",
-        text: "selecione o período de lançamento dos sets que dejeja buscar",
-        error: "A data de término deve ser maior que a inicial"
+        text: "Selecione o período de lançamento dos sets que dejeja buscar",
+        error: "A segunda data deve ser posterior à primeira"
     },
     {
         language: "en-US",
-        text: "select the date range of card sets you want to search",
-        error: "End date must be after the initial"
+        text: "Select the release date range of card sets you want to search",
+        error: "Second date must be later then the first"
     },
 ]
