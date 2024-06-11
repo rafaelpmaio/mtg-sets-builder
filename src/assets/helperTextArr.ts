@@ -1,7 +1,7 @@
 export const helperTextArr = [
     {
         language: "pt-BR",
-        text: "Selecione o período de lançamento dos sets que dejeja buscar",
+        text: "Selecione o período de lançamento das coleções que deseja buscar",
         error: "A segunda data deve ser posterior à primeira"
     },
     {

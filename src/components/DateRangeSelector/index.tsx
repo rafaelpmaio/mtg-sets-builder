@@ -31,7 +31,7 @@ export default function DateRangeSelector({ language }: { language: string }) {
                 sx={{ width: "500px", display: "flex", alignItems: "center", gap: 2 }}
             >
                 <FormHelperText >
-                    <Typography> {helperText[0].text} </Typography>
+                    <Typography variant="body2"> {helperText[0].text} </Typography>
                 </FormHelperText>
                 <DatePicker
                     label="de / from"
