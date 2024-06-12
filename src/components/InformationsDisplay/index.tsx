@@ -26,7 +26,7 @@ export default function InformationsDisplay({ language }: { language: string }) 
                         aria-controls={`panel${index}-content`}
                         expandIcon={<ExpandMoreIcon />}
                     >
-                        <Typography variant="h6" component="div">{data.title}</Typography>
+                        <Typography variant="body1">{data.title}</Typography>
                     </AccordionSummary>
                     <AccordionDetails >
                         <Typography variant="body2" color="text.secondary" component="div" dangerouslySetInnerHTML={{ __html: data.description } }/>

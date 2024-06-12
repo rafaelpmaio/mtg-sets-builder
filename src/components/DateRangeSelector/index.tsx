@@ -11,7 +11,7 @@ export default function DateRangeSelector({ language }: { language: string }) {
     const [startDate, setStartDate] = useState<Date | null>(null);
     const [endDate, setEndDate] = useState<Date | null>(null);
     const buildSets = generateAndSaveSetsList(startDate, endDate);
-    
+
     const handleClick = () => {
         buildSets()
     }
@@ -24,14 +24,21 @@ export default function DateRangeSelector({ language }: { language: string }) {
     }
 
     const helperText = filterLanguage(helperTextArr, language)
-    console.log(startDate)
     return (
         <>
             <FormControl
-                sx={{ width: "500px", display: "flex", alignItems: "center", gap: 2 }}
+                sx={{  display: "flex", alignItems: "center", gap: 2 }}
             >
                 <FormHelperText >
-                    <Typography variant="body2"> {helperText[0].text} </Typography>
+                    <Typography
+                        variant="body2"
+                        sx={{
+                            wordWrap: "break-word",
+                            textWrap: "wrap"
+                        }}
+                    >
+                        {helperText[0].text}
+                    </Typography>
                 </FormHelperText>
                 <DatePicker
                     label="de / from"

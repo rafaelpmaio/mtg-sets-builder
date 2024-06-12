@@ -32,20 +32,24 @@ const Home = () => {
     <Box
       component="main"
       gap={4}
-      width="100vw"
+      padding={2}
       display="flex"
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
       bgcolor="#eeeeee"
-      padding={2}
     >
       <Paper
         component="img"
-        height="160px"
-        src={src}
         alt="app fluxogram"
+        src={src}
         elevation={4}
+        sx={{
+          height:{
+            xs:100,
+            sm:160,
+          }
+        }}
       />
       <Stack direction="row">
         <ToggleButtonGroup
