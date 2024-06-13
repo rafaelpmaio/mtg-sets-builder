@@ -3,17 +3,21 @@
 > _Application that request MTG card sets data and structure them into ISet* format._
 <br>
 
-**ISet** {
-    **id**: string;
-    **name**: string;
-    **image**: string;
-    **totalSetSize**: number;
-    **collectedCardsTotal**: number;
-    **releaseDate?**: string;
-    **block?**: string;
-    **collect**: boolean;
-    **isCompleted**: boolean;
-    **cards**: ICard[ ];
+<details>
+<summary> ISet { </summary>
+<pre>
+    <b>id</b>: string; 
+    <b>name</b>: string; 
+    <b>image</b>: string;
+    <b>totalSetSize</b>: number; 
+    <b>collectedCardsTotal</b>: number; 
+    <b>releaseDate?</b>: string; 
+    <b>block?</b>: string; 
+    <b>collect</b>: boolean; 
+    <b>isCompleted</b>: boolean;
+    <b>cards</b>: ICard[ ]; 
+</pre>
+</details>
 }
 
 ### 👇🏾Idioma / Language 
