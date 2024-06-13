@@ -1,46 +1,68 @@
-# Getting Started with Create React App
+# MTG Sets Builder 💀🏔️🏝️☀️🌲
+> Aplicativo que requisita dados de coleções de MTG e estrutura no formato ISet*. <br>
+> _Application that request MTG card sets data and structure them into ISet* format._
+<br>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**ISet** {
+    **id**: string;
+    **name**: string;
+    **image**: string;
+    **totalSetSize**: number;
+    **collectedCardsTotal**: number;
+    **releaseDate?**: string;
+    **block?**: string;
+    **collect**: boolean;
+    **isCompleted**: boolean;
+    **cards**: ICard[ ];
+}
 
-## Available Scripts
+### 👇🏾Idioma / Language 
+<details>
+<summary> pt-BR </summary>
+ 
+## 🎯 Objetivo  
 
-In the project directory, you can run:
+Este projeto foi elaborado para enfrentar um desafio significativo enfrentado pelo aplicativo MTG Collection: tempo de carregamento prolongado. Assumindo a tarefa crucial de lidar com a solicitação HTTP para arquivos de dados extensos da API mtgJson, ele filtra meticulosamente os dados com base no intervalo de datas de lançamento das coleções selecionado e os estrutura de forma eficiente em um arquivo JSON contendo objetos ISet personalizados para integração no aplicativo final.
 
-### `npm start`
+## 📝 Descrição  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Aplicação criada utilizando React junto com Typescript, para a requisição HTTP foi utilizado a biblioteca Axios, e material Material-UI para a criação dos componentes.
+ 
+## ⚙️ Tecnologias Utilizadas  
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+React | Typescript | Axios | Material-UI
 
-### `npm test`
+</details>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+<details>
+<summary> en-US </summary>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🎯 Goal  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This project was crafted to tackle a significant challenge faced by the MTG Collection app: prolonged loading times. Taking on the crucial task of handling HTTP requests for extensive data files from the mtgJson API, it meticulously filters the data based on the selected date range of the card sets release date, and efficiently structures it into a JSON file containing ISet objects tailored for integration into the final application.
+ 
+## 📝 Description  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Application created using React along with Typescript, axios lib was used for the HTTP request, and Material-UI material to create the components.
 
-### `npm run eject`
+## ⚙️ Tools Used  
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+React | Typescript | Axios | Material-UI
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+</details><br>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 🚗 Test Drive 
+<a href="https://mtg-sets-builder.vercel.app/"> 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+ ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white) <br>
+ 
+</a>
 
-## Learn More
+## 📞 Contato / Contact 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<a href="https://www.linkedin.com/in/rafael-de-paiva-maio/">
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)
+
+</a>
