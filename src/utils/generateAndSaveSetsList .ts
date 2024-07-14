@@ -19,11 +19,10 @@ export const generateAndSaveSetsList  = (startDate:Date | null, endDate:Date | n
       })
       .then((allSets) => {
         const filteredSetsList = filterSetsByDateRange(startDate,endDate, allSets);
-        console.log(filteredSetsList)
         return filteredSetsList
       }).then((filteredSets) => {
         const setsList: ISet[] = setsListBuilder(filteredSets);
-        const setsString = JSON.stringify(setsList.filter(set => set.id !== "SUM"))
+        const setsString = JSON.stringify(setsList)
         const blob = new Blob([setsString], { type: "application/json" });
         saveAs(blob, "data.json");
         toast.dismiss(loading);
