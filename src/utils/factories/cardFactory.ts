@@ -13,7 +13,7 @@ export const cardFactory = (mtgJson: any) => {
     manaValue: mtgJson.manaValue,
     colors: mtgJson.colors,
     tcgLink: mtgJson.purchaseUrls.tcgplayer,
-    isCollected: returnTrueByPercentage(100),
+    isCollected: returnTrueByPercentage(30),
     pricePaid: '0',
   };
   return newCard;

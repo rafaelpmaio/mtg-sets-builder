@@ -16,7 +16,7 @@ export const setFactory = (setJson: any, cardsList: ICard[]) => {
     releaseDate: setJson.releaseDate,
     cards: cardsList,
     isFavorite: returnTrueByPercentage(40),
-    collectedCardsTotal: 0,
+    collectedCardsTotal: collectedTotal,
     isCompleted: collectedTotal == cardsList.length,
   };
 
