@@ -1,4 +1,5 @@
 import ICard from "interfaces/ICard";
+import { returnTrueByPercentage } from "utils/returnTrueByPercentage";
 
 export const cardFactory = (mtgJson: any) => {
   const newCard: ICard = {
@@ -12,7 +13,7 @@ export const cardFactory = (mtgJson: any) => {
     manaValue: mtgJson.manaValue,
     colors: mtgJson.colors,
     tcgLink: mtgJson.purchaseUrls.tcgplayer,
-    isCollected: false,
+    isCollected: returnTrueByPercentage(100),
     pricePaid: '0',
   };
   return newCard;

@@ -25,6 +25,8 @@ const Home = () => {
     setLanguage(updatedLanguage);
   }
 
+  // refazer lógica da requisição http para programar 30% dos isCollected para true e 30% favoritados, também aproveitar para mudar o "collect" para "favorite"
+
   const selectedImage = filterLanguage(imageSrcArr, language);
   const src = selectedImage[0].src;
 
@@ -45,9 +47,9 @@ const Home = () => {
         src={src}
         elevation={4}
         sx={{
-          height:{
-            xs:100,
-            sm:160,
+          height: {
+            xs: 100,
+            sm: 160,
           }
         }}
       />

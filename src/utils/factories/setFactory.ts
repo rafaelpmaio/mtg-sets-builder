@@ -1,7 +1,13 @@
 import ICard from "interfaces/ICard";
 import ISet from "interfaces/ISet";
+import { returnTrueByPercentage } from "utils/returnTrueByPercentage";
 
 export const setFactory = (setJson: any, cardsList: ICard[]) => {
+
+  const collectedTotal = cardsList.reduce((acc, card) => {
+    return card.isCollected ? acc + 1 : acc
+  }, 0);
+
   let newSet: ISet = {
     id: setJson.code,
     name: setJson.name,
@@ -9,9 +15,9 @@ export const setFactory = (setJson: any, cardsList: ICard[]) => {
     totalSetSize: setJson.totalSetSize,
     releaseDate: setJson.releaseDate,
     cards: cardsList,
-    collect: false,
-    collectedCardsTotal:0,
-    isCompleted: false,
+    isFavorite: returnTrueByPercentage(40),
+    collectedCardsTotal: 0,
+    isCompleted: collectedTotal == cardsList.length,
   };
 
   return newSet;
